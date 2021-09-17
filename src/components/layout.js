@@ -5,6 +5,7 @@ import './global.css'
 import Seo from './seo'
 import Navigation from './navigation'
 import Footer from './footer'
+import Login from './login'
 class Template extends React.Component {
   render() {
     const { children } = this.props
@@ -13,6 +14,7 @@ class Template extends React.Component {
       <>
         <Seo />
         <Navigation />
+        <Login />
         <main>{children}</main>
         <Footer />
       </>
