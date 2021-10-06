@@ -15,8 +15,8 @@
  });
  
  export default async function handler(
-   req: GatsbyFunctionRequest,
-   res: GatsbyFunctionResponse
+   req,
+   res
  ) {
    let claims, permissions;
    const token = getTokenFromHeader(req.headers.authorization);
