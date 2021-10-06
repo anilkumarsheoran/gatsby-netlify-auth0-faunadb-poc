@@ -10,6 +10,7 @@
   "dependencies": {
     "@auth0/auth0-react": "^1.7.0",
     "@serverless-jwt/jwt-verifier": "^0.2.1",
+    "auth0": "^2.36.2",
     "gatsby": "^3.10.1",
     "gatsby-plugin-create-client-paths": "^3.14.0",
     "gatsby-plugin-image": "^1.10.1",
