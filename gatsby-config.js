@@ -39,6 +39,9 @@ module.exports = {
     title: "Gatsby Contentful Starter",
     description: "Official Contentful Gatsby Starter",
   },
+  flags: {
+    DEV_WEBPACK_CACHE: true,
+  },
   pathPrefix: "/gatsby-contentful-starter",
   plugins: [
     "gatsby-transformer-remark",
@@ -56,3 +59,18 @@ module.exports = {
     // },
   ],
 };
+
+
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /\.jsx?$/,
+            use: loaders.js(),
+          },
+        ],
+      },
+    })
+}

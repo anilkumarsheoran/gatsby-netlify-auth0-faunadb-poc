@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import  Link  from 'gatsby-link'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Container from './container'

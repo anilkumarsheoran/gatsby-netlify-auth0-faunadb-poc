@@ -1,7 +1,7 @@
 /**
  * Returns a list of users and roles for each user.
  */
- import { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby';
+ //import { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby';
  const ManagementClient = require('auth0').ManagementClient;
  const {
    JwtVerifier,
