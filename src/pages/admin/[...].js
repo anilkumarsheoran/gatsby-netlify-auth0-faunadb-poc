@@ -10,7 +10,6 @@ export default function Admin(props) {
     return (
         <Layout location={props.location}>
             <Seo title="Admin" />
-            <div>Admin Page</div>
             <Router basepath="/admin">
                 <PrivateRoute component={Profile} path="/profile" />
                 {/* <Details path="/details" />
