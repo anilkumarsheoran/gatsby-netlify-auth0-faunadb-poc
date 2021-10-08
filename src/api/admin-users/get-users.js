@@ -10,8 +10,14 @@
  } = require('@serverless-jwt/jwt-verifier');
  
  const jwt = new JwtVerifier({
-   issuer: `https://${process.env.GATSBY_AUTH0_DOMAIN}/`,
-   audience: `https://${process.env.AUTH0_USERADMIN_AUDIENCE}`,
+  //  issuer: `https://${process.env.GATSBY_YOUR_AUTH0_DOMAIN}/`,
+  //  audience: `https://${process.env.GATSBY_YOUR_AUTH0_USERADMIN_AUDIENCE}`,
+  //  //`https://dev-tkgwbdg3.au.auth0.com/userinfo`,
+  //  //`https://${process.env.GATSBY_YOUR_AUTH0_USERADMIN_AUDIENCE}`,
+  //  algorithms: ['RS256']
+    audience: 'https://useradmin-poc',
+    issuer: 'https://dev-tkgwbdg3.au.auth0.com/',
+    algorithms: ['RS256']
  });
  
  export default async function handler(
@@ -34,6 +40,7 @@
      permissions = claims.permissions || [];
    } catch (err) {
      if (err instanceof JwtVerifierError) {
+       console.log('errrrrrr'+ err)
        return res.status(403).json({
          error: `Something went wrong. ${err.code}`,
          error_description: `${err.message}`,
@@ -67,7 +74,7 @@
      domain: `${process.env.GATSBY_YOUR_AUTH0_DOMAIN}`,
      clientId: `${process.env.GATSBY_YOUR_AUTH0_BACKEND_CLIENT_ID}`,
      clientSecret: `${process.env.GATSBY_YOUR_AUTH0_BACKEND_CLIENT_SECRET}`,
-     scope: 'read:users read:roles read:role_members',
+     scope: 'read:users read:roles',
    });
  
    try {

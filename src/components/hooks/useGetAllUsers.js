@@ -8,7 +8,7 @@ export const useGetAllUsers = () => {
   const opts = {
    // method: 'GET',
     audience: 'https://useradmin-poc',
-    scope: 'read:users',
+    scope: 'read:users read:roles',
   };
 
   const { loading, error, refresh, data } = useApi(

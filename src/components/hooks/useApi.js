@@ -23,7 +23,7 @@
      (async () => {
        try {
          const { audience, scope, ...fetchOptions } = options;
-        console.log('before calling getAccessTokenSilently')
+        console.log('before calling getAccessTokenSilently' + audience)
          const accessToken = await getAccessTokenSilently({ audience, scope });
  
          // For debugging, log access token when in development mode
