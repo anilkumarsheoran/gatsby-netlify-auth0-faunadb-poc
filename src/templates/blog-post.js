@@ -102,6 +102,7 @@ export const pageQuery = graphql`
           excerpt
         }
       }
+      authRequired
     }
     previous: contentfulBlogPost(slug: { eq: $previousPostSlug }) {
       slug

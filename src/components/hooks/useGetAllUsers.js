@@ -2,6 +2,8 @@
 import React from 'react'
 import { useApi } from './useApi';
 import { useAuth0 } from '@auth0/auth0-react';
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 export const useGetAllUsers = () => {
   const { login, getAccessTokenWithPopup } = useAuth0();
@@ -16,7 +18,9 @@ export const useGetAllUsers = () => {
     opts
   );
   if (loading) {
-    return <div>Loading...</div>;
+    return <div style={{ textAlign: 'center' }}><Loader
+    type="Circles" color="#00BFFF" height={80} width={80}
+    /></div>;
   }
   if (error) {
     console.log('errrrrrrr', error.error)
