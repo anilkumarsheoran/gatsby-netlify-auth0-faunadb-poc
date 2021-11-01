@@ -72,6 +72,8 @@
     "netlify:login": "netlify login",
     "netlify:deploy": "netlify deploy -d public -p",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "cy:open": "cypress open",
+    "test:e2e": "start-server-and-test dev http://localhost:8000 cy:open"
   }
 }
