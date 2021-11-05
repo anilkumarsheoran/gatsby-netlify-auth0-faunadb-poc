@@ -34,6 +34,49 @@ if (!spaceId || !accessToken) {
   );
 }
 
+// gatsby-config.js
+const myQuery = `{
+  allContentfulBlogPost {
+    nodes {
+      objectID: id
+      description {
+        description
+        childMarkdownRemark {
+          html
+        }
+      }
+      publishDate
+      tags
+      author {
+        id
+        email
+        name
+        image {
+          gatsbyImageData
+        }
+      }
+      slug
+      title
+      heroImage {
+        gatsbyImageData
+      }
+    }
+  }
+}`;
+
+const queries = [
+  {
+    query: myQuery,
+    transformer: ({ data }) => data.allContentfulBlogPost.nodes, // optional
+    // indexName: 'blog-post', // overrides main index name, optional
+    // settings: {
+    //   // optional, any index settings
+    //   // Note: by supplying settings, you will overwrite all existing settings on the index
+    // },
+    // matchFields: ['slug', 'modified'], // Array<String> overrides main match fields, optional
+  },
+];
+
 module.exports = {
   siteMetadata: {
     title: "Gatsby Contentful Starter",
@@ -58,6 +101,28 @@ module.exports = {
     //   resolve: `gatsby-plugin-create-client-paths`,
     //   options: { prefixes: [`/admin/*`] },
     // },
+    {
+      // This plugin must be placed last in your list of plugins to ensure that it can query all the GraphQL data
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_YOUR_ALGOLIA_APP_ID,
+        // Use Admin API key without GATSBY_ prefix, so that the key isn't exposed in the application
+        // Tip: use Search API key with GATSBY_ prefix to access the service from within components
+        apiKey: process.env.GATSBY_YOUR_ALGOLIA_API_KEY,
+        indexName: process.env.GATSBY_YOUR_ALGOLIA_INDEX_NAME, // for all queries
+        queries,
+        chunkSize: 10000, // default: 1000
+        // settings: {
+        //   // optional, any index settings
+        //   // Note: by supplying settings, you will overwrite all existing settings on the index
+        // },
+        // //enablePartialUpdates: true, // default: false
+        // matchFields: ['slug', 'modified'], // Array<String> default: ['modified']
+        // concurrentQueries: false, // default: true
+        // skipIndexing: true, // default: false, useful for e.g. preview deploys or local development
+        // continueOnFailure: false, // default: false, don't fail the build if algolia indexing fails
+      },
+    },
   ],
 };
 
@@ -75,3 +140,5 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
       },
     })
 }
+
+

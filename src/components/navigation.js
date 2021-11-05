@@ -26,6 +26,11 @@ const Navigation = () => {
             Blog
           </Link>
         </li>
+        <li className={styles.navigationItem}>
+          <Link to="/search/" activeClassName="active">
+            Search
+          </Link>
+        </li>
         {isAuthenticated &&
           <li className={styles.navigationItem}>
             <Link to="/admin/profile" activeClassName="active">
