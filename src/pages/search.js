@@ -25,7 +25,7 @@ import Container from '../components/container'
 
 class BlogIndex extends React.Component {
   render() {
-    const searchClient = algoliasearch('88IVVBSS0A', '4a4c241d16358f8c4f2de8e1819a3065');
+    const searchClient = algoliasearch(process.env.GATSBY_YOUR_ALGOLIA_APP_ID, process.env.GATSBY_YOUR_ALGOLIA_SEARCH_KEY);
 
     return (
       <Layout location={this.props.location}>

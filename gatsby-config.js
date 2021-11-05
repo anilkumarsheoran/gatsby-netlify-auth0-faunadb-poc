@@ -97,10 +97,6 @@ module.exports = {
       resolve: "gatsby-source-contentful",
       options: contentfulConfig,
     },
-    // {
-    //   resolve: `gatsby-plugin-create-client-paths`,
-    //   options: { prefixes: [`/admin/*`] },
-    // },
     {
       // This plugin must be placed last in your list of plugins to ensure that it can query all the GraphQL data
       resolve: `gatsby-plugin-algolia`,
